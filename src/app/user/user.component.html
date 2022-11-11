@@ -1,0 +1,23 @@
+<div *ngIf="user">
+  <h1>
+    {{ user.firstName }} {{ user.lastName }},{{ user.maidenName }} ({{
+      user.username
+    }})
+  </h1>
+  <div><h2>Personal Information</h2></div>
+  <img src="{{ user.image }}" alt="Mia Immagine" />
+  <h3>FirstName</h3>
+  {{ user.firstName }}
+  <h3>LastName</h3>
+  {{ user.lastName }}
+  <h3>Gender</h3>
+  {{ user.gender }}
+  <h3>Age</h3>
+  {{ user.age }}
+  <h3>BirthDate</h3>
+  {{ user.birthDate }}
+  <h3>Email</h3>
+  {{ user.email }}
+  <h3>Phone Number</h3>
+  {{ user.phone }}
+</div>

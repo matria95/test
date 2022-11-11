@@ -1,0 +1,35 @@
+<table class="table">
+  <caption>
+    <p>I miei dati</p>
+  </caption>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>Gender</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Birth Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>
+        <button (click)="goToUserDetail(u.id)">{{ u.id }}</button>
+      </td>
+      <td>{{ u.firstName }} {{ u.lastName }}, {{ u.maidenName }}</td>
+      <td>{{ u.gender }}</td>
+      <td>{{ u.username }}</td>
+      <td>
+        <a href="mailto:{{ u.email }}">{{ u.email }}</a>
+      </td>
+      <td>{{ u.birthDate }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="container" *ngFor="let p of pages">
+  <button (click)="goUsersByPage(p + 1)">
+    {{ p + 1 }}
+  </button>
+</div>
