@@ -9,7 +9,7 @@ import { UsersService } from '../services/users.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  title = 'prova';
+  title = 'test';
   USERS_LIMIT!: number;
   USER_SKIP: number = 15;
   USER_TOTAL: number = 100;
@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.USERS_LIMIT = Math.ceil(this.USER_TOTAL / this.USER_SKIP);
+    this.USERS_LIMIT == this.USER_SKIP;
+    //this.USERS_LIMIT = Math.ceil(this.USER_TOTAL / this.USER_SKIP);
     this.pages = Array.from(Array(this.USERS_LIMIT).keys());
     this.activatedRoute.queryParams.subscribe((queryParams) => {
       this.getUsers(this.USER_SKIP, this.USER_SKIP * (queryParams['page'] - 1));
