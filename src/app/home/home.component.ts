@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.USERS_LIMIT == this.USER_SKIP;
-    //this.USERS_LIMIT = Math.ceil(this.USER_TOTAL / this.USER_SKIP);
+    this.USERS_LIMIT = Math.ceil(this.USER_TOTAL / this.USER_SKIP);
     this.pages = Array.from(Array(this.USERS_LIMIT).keys());
     this.activatedRoute.queryParams.subscribe((queryParams) => {
       this.getUsers(this.USER_SKIP, this.USER_SKIP * (queryParams['page'] - 1));
