@@ -1,1 +1,43 @@
-<p>new works!</p>
+<p>Inserisci Nuovo Utente</p>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="newForm">
+  <label for="firstName">First Name: </label>
+  <input
+    placeholder="Inserisci il tuo Nome"
+    id="firstName"
+    type="text"
+    formControlName="firstName"
+  />
+
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastName" />
+
+  <label for="user-name">UserName: </label>
+  <input id="user-name" type="text" formControlName="username" />
+
+  <label for="gender">Sesso :</label>
+
+  <select id="gender" formControlName="gender">
+    <option value="female">Donna</option>
+    <option value="male">Uomo</option>
+    <option value="other">Altro</option>
+  </select>
+  <label for="email">Email: </label>
+  <input id="email" type="text" formControlName="email" />
+
+  <label for="password">password : </label>
+  <input id="password" type="password " formControlName="password" />
+
+  <label for="confermaPass">Conferma password : </label>
+  <input
+    id="confermaPass"
+    type="password"
+    (input)="checkPw()"
+    formControlName="confermaPass"
+  />
+
+  <p>Completa per iscriverti</p>
+  <button type="submit" [disabled]="!newForm.valid">Submit</button>
+</form>
+<p>Form Status: {{ newForm.status }}</p>
+<!--verifico stato -->
