@@ -8,9 +8,17 @@ import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NewComponent } from './new/new.component';
 @NgModule({
-  declarations: [AppComponent, UserComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, RouterModule],
+  declarations: [AppComponent, UserComponent, HomeComponent, NewComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    RouterModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
