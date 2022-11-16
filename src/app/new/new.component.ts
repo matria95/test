@@ -9,6 +9,7 @@ import {
 
 import { User } from '../model/user.model';
 import { UsersService } from '../services/users.service';
+import { checkpassValidator } from './checkpass';
 
 @Component({
   selector: 'app-new',
@@ -16,16 +17,19 @@ import { UsersService } from '../services/users.service';
   styleUrls: ['./new.component.css'],
 })
 export class NewComponent implements OnInit {
-  newForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    username: ['', Validators.required],
-    email: ['', Validators.email],
-    gender: ['other'],
-    password: ['', Validators.required],
+  newForm = this.fb.group(
+    {
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: ['', Validators.required],
+      email: ['', Validators.email],
+      gender: ['other'],
+      password: ['', Validators.required],
 
-    confermaPass: ['', Validators.required],
-  });
+      confermaPass: ['', Validators.required],
+    },
+    { validators: checkpassValidator }
+  );
 
   user: User[] = [];
 

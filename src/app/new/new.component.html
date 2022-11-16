@@ -1,43 +1,128 @@
-<p>Inserisci Nuovo Utente</p>
+<body>
+  <div><h3>Inserisci Nuovo Utente</h3></div>
+  <div class="container">
+    <form
+      (ngSubmit)="onSubmit()"
+      [formGroup]="newForm"
+      method="post"
+      autocomplete="on"
+    >
+      <h3>Inserisci Nuovo Utente</h3>
+      <div class="box">
+        <label for="firstName" class="fl fontLabel">First Name: </label>
+        <div>
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="fr">
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            class="textBox"
+            formControlName="firstName"
+          />
+        </div>
+      </div>
+      <!--First name-->
+      <div class="box">
+        <label for="label" class="fl fontLabel"> Last Name: </label>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="newForm">
-  <label for="firstName">First Name: </label>
-  <input
-    placeholder="Inserisci il tuo Nome"
-    id="firstName"
-    type="text"
-    formControlName="firstName"
-  />
+        <div class="fr">
+          <input
+            type="text"
+            name="secondName"
+            placeholder="Inserisci il tuo Nome"
+            class="textBox"
+            formControlName="lastName"
+          />
+        </div>
+      </div>
+      <!--Last name-->
+      <div class="box">
+        <label for="label" class="fl fontLabel">UserName: </label>
 
-  <label for="last-name">Last Name: </label>
-  <input id="last-name" type="text" formControlName="lastName" />
+        <div class="fr">
+          <input
+            class="textBox"
+            placeholder="Last Name"
+            type="text"
+            formControlName="username"
+          />
+        </div>
+      </div>
+      <!--User name-->
 
-  <label for="user-name">UserName: </label>
-  <input id="user-name" type="text" formControlName="username" />
+      <div class="box">
+        <label for="label" class="fl fontLabel">Sesso :</label>
 
-  <label for="gender">Sesso :</label>
+        <div class="fr">
+          <select class="textBox" id="gender" formControlName="gender">
+            <option value="female">Donna</option>
+            <option value="male">Uomo</option>
+            <option value="other">Altro</option>
+          </select>
+        </div>
+      </div>
+      <!--gender-->
 
-  <select id="gender" formControlName="gender">
-    <option value="female">Donna</option>
-    <option value="male">Uomo</option>
-    <option value="other">Altro</option>
-  </select>
-  <label for="email">Email: </label>
-  <input id="email" type="text" formControlName="email" />
+      <div class="box">
+        <label for="label" class="fl fontLabel">Email: </label>
 
-  <label for="password">password : </label>
-  <input id="password" type="password " formControlName="password" />
+        <div class="fr">
+          <input
+            class="textBox"
+            id="email"
+            type="text"
+            formControlName="email"
+          />
+        </div>
+      </div>
+      <!--email-->
+      <div class="box">
+        <label for="label" class="fl fontLabel"> Password : </label>
 
-  <label for="confermaPass">Conferma password : </label>
-  <input
-    id="confermaPass"
-    type="password"
-    (input)="checkPw()"
-    formControlName="confermaPass"
-  />
+        <div class="fr">
+          <input
+            class="textBox"
+            id="password"
+            type="password"
+            formControlName="password"
+          />
+        </div>
+      </div>
 
-  <p>Completa per iscriverti</p>
-  <button type="submit" [disabled]="!newForm.valid">Submit</button>
-</form>
-<p>Form Status: {{ newForm.status }}</p>
-<!--verifico stato -->
+      <!--Password-->
+
+      <div class="box">
+        <label for="label" class="fl fontLabel" style="line-height: 18px"
+          >Conferma password:
+        </label>
+
+        <div class="fr">
+          <input
+            class="textBox"
+            id="confermaPass"
+            type="password"
+            formControlName="confermaPass"
+          />
+        </div>
+
+        <small
+          *ngIf="newForm.errors?.['checkpass'] && (newForm.touched || newForm.dirty)"
+          class="cross-validation-error-message alert alert-danger"
+        >
+          Le password non coincidono
+        </small>
+      </div>
+      <!--Conferma Password-->
+
+      <div class="box" style="background: #2d3e3f">
+        <button class="submit" type="submit" [disabled]="!newForm.valid">
+          Submit
+        </button>
+      </div>
+    </form>
+    <p>Form Status: {{ newForm.status }}</p>
+    <!--verifico stato -->
+  </div>
+</body>
