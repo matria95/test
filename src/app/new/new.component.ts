@@ -1,11 +1,14 @@
-import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { group } from '@angular/animations';
 import {
   Validators,
   FormControl,
   FormGroup,
   FormBuilder,
 } from '@angular/forms';
+
+import { User } from '../model/user.model';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-new',
@@ -19,25 +22,37 @@ export class NewComponent implements OnInit {
     username: ['', Validators.required],
     email: ['', Validators.email],
     gender: ['other'],
-    password: ['', Validators.minLength(6)],
+    password: ['', Validators.required],
+
     confermaPass: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  user: User[] = [];
+
+  constructor(private fb: FormBuilder, private userService: UsersService) {}
 
   ngOnInit(): void {}
 
-  checkPw() {
-    let password = this.newForm.controls['password'].value;
-    let confermaPass = this.newForm.controls['confermaPass'].value;
-    if (!(password == confermaPass)) {
-      this.newForm.controls['password'].setErrors({ incorrect: true });
-    } else {
-      this.newForm.controls['password'].setErrors(null);
-    }
-  }
-
   onSubmit() {
+    this.userService
+      .postUser({
+        firstName: this.newForm.controls['firstName'].value,
+        lastName: this.newForm.controls['lastName'].value,
+        username: this.newForm.controls['username'].value,
+        gender: this.newForm.controls['gender'].value,
+        email: this.newForm.controls['email'].value,
+        password: this.newForm.controls['password'].value,
+      })
+      .subscribe(
+        (res) => {
+          console.log('User', res);
+          this.user = res.users;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
     console.log(this.newForm.value);
   }
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RootObject, User } from '../model/user.model';
@@ -20,5 +20,12 @@ export class UsersService {
 
   getSingleUser(idUser: number): Observable<any> {
     return this.http.get<RootObject>('https://dummyjson.com/users/' + idUser);
+  }
+  postUser(body: any): Observable<any> {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post<RootObject>('https://dummyjson.com/users/add', body, {
+      headers: headers,
+    });
   }
 }
