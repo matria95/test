@@ -6,6 +6,6 @@ export const checkpassValidator: ValidatorFn = (
   const password = control.get('password');
   const confermaPass = control.get('confermaPass');
   return password && confermaPass && password.value !== confermaPass.value
-    ? { misMatch: true }
+    ? { checkpassValidator: true }
     : null;
 };
