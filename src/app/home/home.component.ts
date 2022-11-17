@@ -51,4 +51,7 @@ export class HomeComponent implements OnInit {
   goToUserDetail(id: number) {
     this.router.navigateByUrl('/user/' + id);
   }
+  createNewUser() {
+    this.router.navigateByUrl('/user/new');
+  }
 }

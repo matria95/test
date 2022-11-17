@@ -1,5 +1,6 @@
+<h3>Inserisci Nuovo Utente</h3>
 <body>
-  <div><h3>Inserisci Nuovo Utente</h3></div>
+  <h3>Inserisci Nuovo Utente</h3>
   <div class="container">
     <form
       (ngSubmit)="onSubmit()"
@@ -7,7 +8,6 @@
       method="post"
       autocomplete="on"
     >
-      <h3>Inserisci Nuovo Utente</h3>
       <div class="box">
         <label for="firstName" class="fl fontLabel">First Name: </label>
         <div>
@@ -17,11 +17,23 @@
           <input
             type="text"
             name="firstName"
+            id="firstName"
+            class="form-control"
             placeholder="First Name"
             class="textBox"
             formControlName="firstName"
+            required
           />
         </div>
+        <small
+          *ngIf="
+            newForm!.get('firstName')!.invalid &&
+            (newForm!.get('firstName')!.dirty ||
+              newForm!.get('firstName')!.touched)
+          "
+        >
+          Nome obbligatorio
+        </small>
       </div>
       <!--First name-->
       <div class="box">
@@ -36,6 +48,15 @@
             formControlName="lastName"
           />
         </div>
+        <small
+          *ngIf="
+            newForm!.get('lastName')!.invalid &&
+            (newForm!.get('lastName')!.dirty ||
+              newForm!.get('lastName')!.touched)
+          "
+        >
+          Cognome obbligatorio
+        </small>
       </div>
       <!--Last name-->
       <div class="box">
@@ -76,6 +97,14 @@
             formControlName="email"
           />
         </div>
+        <small
+          *ngIf="
+            newForm!.get('email')!.invalid &&
+            (newForm!.get('email')!.dirty || newForm!.get('email')!.touched)
+          "
+        >
+          Email obbligatorio
+        </small>
       </div>
       <!--email-->
       <div class="box">

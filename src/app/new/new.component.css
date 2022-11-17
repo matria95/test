@@ -1,3 +1,25 @@
+.ng-valid[required],
+.ng-valid:not(form) {
+  border-left: 5px solid green; /* red */
+  padding: 0px;
+  margin: -1px;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; /* red */
+  padding: 0px;
+  margin: -1px;
+}
+*[_ngcontent-oyi-c50] {
+  padding: 0px;
+  margin: -1px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -48,7 +70,7 @@ h3 {
 }
 
 .textBox {
-  height: 35px;
+  height: 30px;
   width: 190px;
   border: none;
   padding-left: 20px;
@@ -72,7 +94,6 @@ h3 {
 }
 
 .submit {
-  float: right;
   border: none;
   color: white;
   width: 110px;
@@ -80,7 +101,15 @@ h3 {
   background: #ff6600;
   text-transform: uppercase;
   cursor: pointer;
+  margin-left: 209px;
+  margin-top: 26px;
 }
+
+.submit:hover {
+  background-color: green;
+}
+
 small {
   color: red;
+  margin-left: 21px;
 }

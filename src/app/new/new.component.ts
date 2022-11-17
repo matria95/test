@@ -5,6 +5,7 @@ import {
   FormControl,
   FormGroup,
   FormBuilder,
+  ReactiveFormsModule,
 } from '@angular/forms';
 
 import { User } from '../model/user.model';
@@ -22,8 +23,8 @@ export class NewComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       username: ['', Validators.required],
-      email: ['', Validators.email],
-      gender: ['other'],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      gender: [''],
       password: ['', Validators.required],
 
       confermaPass: ['', Validators.required],
@@ -40,12 +41,11 @@ export class NewComponent implements OnInit {
   onSubmit() {
     this.userService
       .postUser({
-        firstName: this.newForm.controls['firstName'].value,
-        lastName: this.newForm.controls['lastName'].value,
-        username: this.newForm.controls['username'].value,
-        gender: this.newForm.controls['gender'].value,
-        email: this.newForm.controls['email'].value,
-        password: this.newForm.controls['password'].value,
+        firstName: this.newForm.value['firstName'],
+        lastName: this.newForm.value['lastName'],
+        username: this.newForm.value['username'],
+        gender: this.newForm.value['gender'],
+        password: this.newForm.value['password'],
       })
       .subscribe(
         (res) => {
